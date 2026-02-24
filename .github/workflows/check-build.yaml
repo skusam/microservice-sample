@@ -40,10 +40,10 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Build with Maven
-        run: mvn -Dmaven.test.failure.ignore=true -B verify -P github
+        run: mvn -Dmaven.test.failure.ignore=true -B verify
 
-#      - name: Publish Test Results
-#        uses: EnricoMi/publish-unit-test-result-action@v2
-#        with:
-#          files: |
-#            **/target/surefire-reports/**/*.xml
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          files: |
+            **/target/surefire-reports/**/*.xml
