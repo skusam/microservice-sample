@@ -9,8 +9,8 @@
 name: Build from latest commit of pull request, run tests and publish results
 
 on:
-  pull_request:
-    branches: [ '**' ]
+  push:
+    branches: [ "main" ]
 
 jobs:
 
