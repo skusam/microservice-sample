@@ -6,6 +6,7 @@ branch="$( git rev-parse --abbrev-ref HEAD )"
 oci_repository="$( basename `git rev-parse --show-toplevel` )"
 
 docker build \
+  --file ./src/main/docker/Dockerfile.jvm \
   --build-arg BUILD_DATE="$( date -u +'%Y-%m-%dT%H:%M:%SZ' )" \
   --build-arg REVISION="$( git rev-parse --verify HEAD )" \
   --tag "${oci_repository}" .
