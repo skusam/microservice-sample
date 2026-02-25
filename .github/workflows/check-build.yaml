@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Build from latest commit of pull request, run tests and publish results
+name: Build from latest commit
 
 on:
   push:
@@ -47,3 +47,9 @@ jobs:
         with:
           files: |
             **/target/surefire-reports/**/*.xml
+
+      - name: Build Docker image
+          run: |
+            ./.github/workflows/build-image.sh
+          env:
+            IMAGE_REGISTRY_TOKEN: ${{ secrets.IMAGE_REGISTRY_TOKEN }}
